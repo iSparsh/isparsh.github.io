@@ -36,13 +36,20 @@
 
 // export default App
 
-import { Button } from "@/components/ui/button";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing.jsx";
+import Retro from "./pages/Retro.jsx";
+import Modern from "./pages/Modern.jsx";
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/retro/" element={<Retro />} />
+        <Route path="/modern/" element={<Modern />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
