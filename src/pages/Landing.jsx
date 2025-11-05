@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LetterGlitch from "../components/LetterGlitch.jsx";
 import TextType from "../components/TextType.jsx";
+import FuzzyText from "../components/FuzzyText.jsx";
 import morpheusImg from "../assets/morpheus_pixel_art.png";
 import redPillImg from "../assets/red pill.png";
 import bluePillImg from "../assets/blue pill.png";
@@ -10,11 +11,19 @@ function Landing() {
     <div className="relative h-screen w-screen overflow-hidden">
       <LetterGlitch outerVignette={true} />
 
-      <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-        aria-hidden
-      >
-        {/* Visual-only center alignment layer */}
+      {/* Personal Website Title - Fuzzy Text Effect */}
+      <div className="absolute top-[4vh] inset-x-0 z-10 pointer-events-auto overflow-visible flex items-center justify-center">
+        <FuzzyText
+          fontSize="clamp(2rem, 8vw, 6rem)"
+          fontWeight={900}
+          fontFamily="monospace"
+          color="#61dca3"
+          enableHover={true}
+          baseIntensity={0.18}
+          hoverIntensity={0.5}
+        >
+          ./sparsh.
+        </FuzzyText>
       </div>
 
       <div
@@ -26,9 +35,11 @@ function Landing() {
           "--red-y": "77%",
           "--blue-x": "75%",
           "--blue-y": "77%",
-          // You can also tweak pill image size here (affects both hands)
-          // Accepts any CSS length, e.g. "clamp(40px, 7vw, 90px)" or "8vw"
-          "--pill-size": "10vw",
+          // You can also tweak pill image size here
+          // Since the red pill hand appears larger visually, we scale it down slightly
+          // Using clamp to ensure minimum size on phones
+          "--red-pill-size": "clamp(90px, 12vw, 150px)",   // Red pill with min 90px for phones
+          "--blue-pill-size": "clamp(90px, 12vw, 150px)",  // Blue pill with min 90px for phones
         }}
       >
         <div className="relative select-none">
@@ -40,8 +51,8 @@ function Landing() {
           <img
             src={morpheusImg}
             alt="Morpheus silhouette"
-            className="block h-auto"
-            style={{ width: "clamp(220px, 38vw, 520px)" }}
+            className="block h-auto mx-auto"
+            style={{ width: "clamp(450px, 55vw, 580px)" }}
           />
 
           {/* Red pill (left) */}
@@ -59,8 +70,22 @@ function Landing() {
               <img
                 src={redPillImg}
                 alt="Red pill"
-                className="pointer-events-auto transition-transform duration-200 group-hover:scale-125 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_22px_rgba(255,0,0,0.6)]"
-                style={{ width: "var(--pill-size)" }}
+                className="pointer-events-auto group-hover:scale-125 group-hover:-translate-y-2"
+                style={{ 
+                  width: "var(--red-pill-size)", 
+                  height: "auto",
+                  animation: "glow-red 3s ease-in-out infinite",
+                  filter: "drop-shadow(0 0 8px rgba(255, 0, 0, 0.4)) drop-shadow(0 0 16px rgba(255, 0, 0, 0.3))",
+                  transition: "transform 0.1s linear"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.animation = 'none';
+                  e.currentTarget.style.filter = 'drop-shadow(0 0 22px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 0, 0, 0.6))';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.animation = 'glow-red 3s ease-in-out infinite';
+                  e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(255, 0, 0, 0.4)) drop-shadow(0 0 16px rgba(255, 0, 0, 0.3))';
+                }}
               />
               {/* Hover text on the opposite side (left of red pill) */}
               <span
@@ -92,8 +117,22 @@ function Landing() {
               <img
                 src={bluePillImg}
                 alt="Blue pill"
-                className="pointer-events-auto transition-transform duration-200 group-hover:scale-125 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_22px_rgba(0,128,255,0.6)]"
-                style={{ width: "var(--pill-size)" }}
+                className="pointer-events-auto group-hover:scale-125 group-hover:-translate-y-2"
+                style={{ 
+                  width: "var(--blue-pill-size)", 
+                  height: "auto",
+                  animation: "glow-blue 3s ease-in-out infinite",
+                  filter: "drop-shadow(0 0 8px rgba(0, 128, 255, 0.4)) drop-shadow(0 0 16px rgba(0, 128, 255, 0.3))",
+                  transition: "transform 0.1s linear"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.animation = 'none';
+                  e.currentTarget.style.filter = 'drop-shadow(0 0 22px rgba(0, 128, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 128, 255, 0.6))';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.animation = 'glow-blue 3s ease-in-out infinite';
+                  e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(0, 128, 255, 0.4)) drop-shadow(0 0 16px rgba(0, 128, 255, 0.3))';
+                }}
               />
             </div>
           </Link>
@@ -106,7 +145,7 @@ function Landing() {
         <TextType
           as="p"
           className="mx-auto max-w-3xl font-mono text-base text-neutral-200 md:text-lg font-bold"
-          typingSpeed={40}
+          typingSpeed={35}
           pauseDuration={2000}
           cursorCharacter="█"
           loop={true}
