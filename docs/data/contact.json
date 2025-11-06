@@ -1,0 +1,7 @@
+[
+  { "type": "header", "text": "Get In Touch" },
+  { "type": "paragraph", "text": "Email: your.email@example.com" },
+  { "type": "paragraph", "text": "GitHub: github.com/yourusername" },
+  { "type": "paragraph", "text": "LinkedIn: linkedin.com/in/yourprofile" }
+]
+

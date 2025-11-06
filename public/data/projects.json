@@ -1,0 +1,9 @@
+[
+  { "type": "header", "text": "Featured Projects" },
+  { "type": "list", "items": [
+    "Personal Website - A retro-modern portfolio experience",
+    "Project 2 - Description here",
+    "Project 3 - Description here"
+  ]}
+]
+

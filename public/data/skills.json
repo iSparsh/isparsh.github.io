@@ -1,0 +1,11 @@
+[
+  { "type": "header", "text": "Technical Skills" },
+  { "type": "list", "items": [
+    "JavaScript / TypeScript",
+    "React / Next.js",
+    "Node.js",
+    "Python",
+    "Git / Version Control"
+  ]}
+]
+

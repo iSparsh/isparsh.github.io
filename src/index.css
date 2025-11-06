@@ -43,8 +43,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.5 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -159,4 +159,45 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Terminal scrollbar styling */
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.3);
+  border-radius: 4px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.5);
+}
+
+/* Remove default button/link focus indicators (but keep keyboard accessibility) */
+button:focus,
+a:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove click highlight/active state visual indicators */
+button:active,
+a:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove browser default focus rings for Firefox */
+button::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0 !important;
+  outline: 0 !important;
 }

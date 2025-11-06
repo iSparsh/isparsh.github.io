@@ -1,0 +1,6 @@
+[
+  { "type": "header", "text": "About Me" },
+  { "type": "paragraph", "text": "Welcome to my digital space. I'm a developer passionate about creating meaningful experiences through code." },
+  { "type": "paragraph", "text": "I enjoy building web applications, exploring new technologies, and contributing to open-source projects." }
+]
+
