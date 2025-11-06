@@ -19,9 +19,11 @@ const Terminal = () => {
   const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [hasBeenFocused, setHasBeenFocused] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState(0);
   const inputRef = useRef(null);
   const outputRef = useRef(null);
   const terminalRef = useRef(null);
+  const measureRef = useRef(null);
 
   // Initialize with greeting and help
   useEffect(() => {
@@ -45,6 +47,23 @@ const Terminal = () => {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
   }, [outputHistory]);
+
+  // Update cursor position when input changes (for unfocused state)
+  useEffect(() => {
+    if (!isInputFocused && measureRef.current && inputRef.current) {
+      // Copy computed styles from input to measurement span
+      const inputStyles = window.getComputedStyle(inputRef.current);
+      if (measureRef.current) {
+        measureRef.current.style.fontSize = inputStyles.fontSize;
+        measureRef.current.style.fontFamily = inputStyles.fontFamily;
+        measureRef.current.style.fontWeight = inputStyles.fontWeight;
+        measureRef.current.style.letterSpacing = inputStyles.letterSpacing;
+        measureRef.current.textContent = input;
+        const width = measureRef.current.offsetWidth;
+        setCursorPosition(width);
+      }
+    }
+  }, [input, isInputFocused]);
 
   // Handle command execution
   const handleCommand = useCallback(async (command) => {
@@ -278,7 +297,12 @@ const Terminal = () => {
           <span className="text-green-400 font-mono select-none">{currentPrompt}</span>
           <div className="flex-1 relative flex items-center min-w-0">
             {!isInputFocused && (
-              <span className="absolute left-0 text-green-300 font-mono pointer-events-none z-10">
+              <span 
+                className="absolute text-green-300 font-mono pointer-events-none z-10"
+                style={{
+                  left: hasBeenFocused ? `${cursorPosition}px` : '0px'
+                }}
+              >
                 █
               </span>
             )}
@@ -295,7 +319,28 @@ const Terminal = () => {
                 setIsInputFocused(true);
                 setHasBeenFocused(true);
               }}
-              onBlur={() => setIsInputFocused(false)}
+              onBlur={() => {
+                setIsInputFocused(false);
+                // Measure text width to position cursor at the end
+                if (measureRef.current && inputRef.current) {
+                  // Copy computed styles from input to measurement span
+                  const inputStyles = window.getComputedStyle(inputRef.current);
+                  measureRef.current.style.fontSize = inputStyles.fontSize;
+                  measureRef.current.style.fontFamily = inputStyles.fontFamily;
+                  measureRef.current.style.fontWeight = inputStyles.fontWeight;
+                  measureRef.current.style.letterSpacing = inputStyles.letterSpacing;
+                  measureRef.current.textContent = input;
+                  // Use requestAnimationFrame to ensure DOM update
+                  requestAnimationFrame(() => {
+                    if (measureRef.current) {
+                      const width = measureRef.current.offsetWidth;
+                      setCursorPosition(width);
+                    }
+                  });
+                } else {
+                  setCursorPosition(0);
+                }
+              }}
               className="flex-1 bg-transparent text-green-300 font-mono outline-none focus:outline-none min-w-0 relative z-0"
               autoComplete="off"
               spellCheck="false"
@@ -303,6 +348,19 @@ const Terminal = () => {
               style={{ 
                 caretColor: isInputFocused ? '#86efac' : 'transparent'
               }}
+            />
+            {/* Hidden span to measure text width - positioned to match input */}
+            <span
+              ref={measureRef}
+              className="absolute invisible font-mono text-green-300 whitespace-pre pointer-events-none"
+              style={{
+                visibility: 'hidden',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                whiteSpace: 'pre'
+              }}
+              aria-hidden="true"
             />
           </div>
         </form>
