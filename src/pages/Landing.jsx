@@ -19,7 +19,7 @@ function Landing() {
         <h1 className="sr-only">Personal Website - Sparsh</h1>
         <div aria-label="Personal website title: ./sparsh." role="img">
           <FuzzyText
-            fontSize="clamp(2rem, 8vw, 6rem)"
+            fontSize="clamp(4rem, 10vw, 6rem)"
             fontWeight={900}
             fontFamily="monospace"
             color="#61dca3"
