@@ -17,9 +17,9 @@ function Landing() {
       {/* Personal Website Title - Fuzzy Text Effect */}
       <header className="absolute top-[4vh] inset-x-0 z-10 pointer-events-auto overflow-visible flex items-center justify-center">
         <h1 className="sr-only">Personal Website - Sparsh</h1>
-        <div aria-label="Personal website title: ./sparsh." role="img">
+        <div aria-label="Personal website title: ./sparsh." role="img" className="overflow-visible">
           <FuzzyText
-            fontSize="clamp(4rem, 10vw, 6rem)"
+            fontSize="clamp(3rem, 12vw, 6rem)"
             fontWeight={900}
             fontFamily="monospace"
             color="#61dca3"
@@ -27,7 +27,7 @@ function Landing() {
             baseIntensity={0.18}
             hoverIntensity={0.5}
           >
-            ./sparsh.
+            ./sparsh
           </FuzzyText>
         </div>
       </header>
