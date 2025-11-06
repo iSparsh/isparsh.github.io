@@ -1,0 +1,9 @@
+[
+  { "type": "header", "text": "Linux" },
+  { "type": "paragraph", "text": "My Linux journey, configurations, and contributions." },
+  { "type": "list", "items": [
+    "Linux Skill 1 - Description here",
+    "Linux Skill 2 - Description here",
+    "Linux Skill 3 - Description here"
+  ]}
+]

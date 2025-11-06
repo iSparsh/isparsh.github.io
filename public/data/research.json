@@ -1,0 +1,9 @@
+[
+  { "type": "header", "text": "Research" },
+  { "type": "paragraph", "text": "My research interests and publications." },
+  { "type": "list", "items": [
+    "Research Project 1 - Description here",
+    "Research Project 2 - Description here",
+    "Research Project 3 - Description here"
+  ]}
+]
