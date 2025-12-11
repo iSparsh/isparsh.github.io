@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail, Home, Menu } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "@/contexts/ThemeContext";
 import {
   Sheet,
   SheetContent,
@@ -12,8 +13,11 @@ import {
 
 function TopBar() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,32 +28,16 @@ function TopBar() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        { name: "About", id: "about" },
-        { name: "Projects", id: "projects" },
-        { name: "Research", id: "research" },
-        { name: "Resume", id: "resume" },
-        { name: "Contact", id: "contact" },
-        { name: "Linux", id: "linux" },
-      ];
-
-      const scrollPosition = window.scrollY + 100;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i].id);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check on mount
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Determine active section based on current route
+    const path = location.pathname;
+    if (path.startsWith('/modern/')) {
+      const section = path.split('/modern/')[1] || '';
+      // If on /modern/ or /modern, it's the about/home page
+      setActiveSection(section === '' ? 'about' : section);
+    } else {
+      setActiveSection('');
+    }
+  }, [location]);
 
   const formatTime = (date) => {
     const hour = date.getHours().toString().padStart(2, '0');
@@ -59,20 +47,17 @@ function TopBar() {
   };
 
   const sections = [
-    { name: "About", id: "about" },
-    { name: "Projects", id: "projects" },
-    { name: "Research", id: "research" },
-    { name: "Resume", id: "resume" },
-    { name: "Contact", id: "contact" },
-    { name: "Linux", id: "linux" },
+    { name: "About", id: "about", path: "/modern/" },
+    { name: "Projects", id: "projects", path: "/modern/projects" },
+    { name: "Research", id: "research", path: "/modern/research" },
+    { name: "Resume", id: "resume", path: "/modern/resume" },
+    { name: "Contact", id: "contact", path: "/modern/contact" },
+    { name: "Linux", id: "linux", path: "/modern/linux" },
   ];
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setMobileMenuOpen(false); // Close mobile menu after navigation
-    }
+  const navigateToSection = (path) => {
+    navigate(path);
+    setMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
   return (
@@ -82,7 +67,11 @@ function TopBar() {
         <div className="flex items-center gap-2 rounded-md border border-border backdrop-blur-xl px-2 md:px-4 py-2.5 h-10 shadow-lg bg-background/20">
           <Link
             to="/"
-            className="text-[#00ff41] transition-colors hover:text-[#00ff41]/80 focus:outline-none focus-visible:text-[#00ff41]/80"
+            className={`transition-colors focus:outline-none focus-visible:text-[#00ff41]/80 ${
+              theme === 'light' 
+                ? 'text-green-600 hover:text-green-700' 
+                : 'text-[#00ff41] hover:text-[#00ff41]/80'
+            }`}
             aria-label="Home"
           >
             <Home className="h-4 w-4" />
@@ -94,11 +83,11 @@ function TopBar() {
             {sections.map((section) => (
               <button
                 key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`text-sm font-medium transition-colors focus:outline-none focus-visible:text-cyan-400 ${
+                onClick={() => navigateToSection(section.path)}
+                className={`text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:text-cyan-400 ${
                   activeSection === section.id
-                    ? "text-cyan-400"
-                    : "text-foreground/80 hover:text-foreground"
+                    ? "text-cyan-400 scale-110"
+                    : "text-foreground/80 hover:text-foreground hover:text-[#00ff41] hover:scale-110"
                 }`}
               >
                 {section.name}
@@ -127,11 +116,11 @@ function TopBar() {
                   {sections.map((section) => (
                     <button
                       key={section.id}
-                      onClick={() => scrollToSection(section.id)}
-                      className={`text-left text-base font-medium transition-colors py-2 px-4 rounded-md ${
+                      onClick={() => navigateToSection(section.path)}
+                      className={`text-left text-base font-medium transition-all duration-300 py-2 px-4 rounded-md ${
                         activeSection === section.id
                           ? "text-cyan-400 bg-cyan-400/10"
-                          : "text-foreground/80 hover:text-foreground hover:bg-accent"
+                          : "text-foreground/80 hover:text-foreground hover:text-[#00ff41] hover:bg-accent hover:scale-105"
                       }`}
                     >
                       {section.name}
@@ -148,41 +137,6 @@ function TopBar() {
                   <ThemeToggle />
                 </div>
 
-                {/* Separator */}
-                <div className="h-px bg-border" />
-
-                {/* Social Links */}
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-sm font-semibold text-foreground/60 mb-2 px-4">Connect</h3>
-                  <a
-                    href="mailto:spmishra@wisc.edu"
-                    className="flex items-center gap-3 text-foreground/80 hover:text-foreground py-2 px-4 rounded-md hover:bg-accent transition-colors"
-                    aria-label="Email"
-                  >
-                    <Mail className="h-5 w-5" />
-                    <span>Email</span>
-                  </a>
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-foreground/80 hover:text-foreground py-2 px-4 rounded-md hover:bg-accent transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <Github className="h-5 w-5" />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-foreground/80 hover:text-foreground py-2 px-4 rounded-md hover:bg-accent transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
               </div>
             </SheetContent>
           </Sheet>
@@ -206,9 +160,8 @@ function TopBar() {
           >
             <Mail className="h-4 w-4" />
           </a>
-          {/* Social links - can be updated from contact.json later */}
           <a
-            href="https://github.com"
+            href="https://github.com/iSparsh"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/80 transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"
@@ -217,7 +170,7 @@ function TopBar() {
             <Github className="h-4 w-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/sparsh-mishra-24b946241/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/80 transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"

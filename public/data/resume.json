@@ -1,0 +1,6 @@
+[
+  { "type": "header", "text": "Resume" },
+  { "type": "paragraph", "text": "Below is my resume in PDF format. You can view it directly in your browser or download it for your records." },
+  { "type": "resume", "file": "Sparsh_Mishra_Resume.pdf" }
+]
+

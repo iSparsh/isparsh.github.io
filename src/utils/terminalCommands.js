@@ -3,7 +3,7 @@
 const STORAGE_KEY = 'terminalUserName';
 
 // Available page names (must match JSON file names)
-const availablePages = ['about', 'projects', 'experience', 'contact', 'skills'];
+const availablePages = ['about', 'projects', 'research', 'linux', 'contact', 'resume'];
 
 // Cache for loaded page content
 const pageContentCache = {};

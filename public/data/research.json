@@ -1,9 +1,23 @@
 [
   { "type": "header", "text": "Research" },
-  { "type": "paragraph", "text": "My research interests and publications." },
-  { "type": "list", "items": [
-    "Research Project 1 - Description here",
-    "Research Project 2 - Description here",
-    "Research Project 3 - Description here"
-  ]}
+  { "type": "paragraph", "text": "My research work involves applying cutting-edge deep learning techniques to tackle important scientific challenges." },
+  {
+    "type": "research",
+    "title": "University of Oxford, Remote",
+    "period": "February 2022 - November 2022",
+    "role": "Student Research Assistant",
+    "mentor": "Dr. Utkarsh Agrawal",
+    "paper": "Detecting COVID-19 Infections from CT Scans Using a Convolutional Neural Network",
+    "description": "I was responsible for developing a custom CNN using Python and TensorFlow, which successfully achieved an accuracy of 97.3% on a public dataset.",
+    "achievement": "This paper was entered into the iNSPIRE Competition."
+  },
+  {
+    "type": "research",
+    "title": "Maharashtra Institute of Technology, Aurangabad, India",
+    "period": "December 2021 - October 2022",
+    "role": "Student Research Assistant",
+    "paper": "An Improved Object Tracking and Estimating Using Yolov5 Model Based on Adaptive Kalman Filter and Mixed Precision for Efficient Inference Performance on Surveillance Camera",
+    "description": "I co-authored a research paper focusing on computer vision and optimization.",
+    "status": "This paper has been submitted to the Trends in Science Journal and is currently available to read in pre-print."
+  }
 ]

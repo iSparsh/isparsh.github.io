@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Mail, ExternalLink } from "lucide-react";
+import { Mail, ExternalLink, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
 import myPicture from "../assets/my_picture.jpg";
 import SplitText from "./SplitText";
 import Iridescence from "./Iridescence";
@@ -7,6 +8,33 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 function Header() {
   const { theme } = useTheme();
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [indicatorOpacity, setIndicatorOpacity] = useState(0);
+
+  useEffect(() => {
+    // Show indicator after 2 seconds if user hasn't scrolled
+    const timer = setTimeout(() => {
+      if (!hasScrolled) {
+        setShowScrollIndicator(true);
+        // Fade in slowly over 1 second
+        setTimeout(() => setIndicatorOpacity(1), 50);
+      }
+    }, 2000);
+
+    const handleScroll = () => {
+      setHasScrolled(true);
+      setIndicatorOpacity(0);
+      setTimeout(() => setShowScrollIndicator(false), 300);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasScrolled]);
   
   return (
     <section className="relative pt-20 pb-16 min-h-screen">
@@ -51,7 +79,7 @@ function Header() {
           <Button 
             asChild 
             variant="outline"
-            className="shadow-[0_0_15px_rgba(0,0,0,0.8)]"
+            className="shadow-[0_0_15px_rgba(0,0,0,0.8)] py-5 md:py-2 text-base md:text-sm"
           >
             <a href="mailto:spmishra@wisc.edu">
               <Mail className="mr-2 h-4 w-4" />
@@ -59,13 +87,24 @@ function Header() {
             </a>
           </Button>
 
-          <Button asChild variant="outline" className="shadow-[0_0_15px_rgba(0,0,0,0.8)]">
+          <Button asChild variant="outline" className="shadow-[0_0_15px_rgba(0,0,0,0.8)] py-5 md:py-2 text-base md:text-sm">
             <a href="https://github.com/iSparsh/waybar-themes/tree/main" target="_blank" rel="noopener noreferrer">
               What I'm Working On
               <ExternalLink className="ml-2 h-4 w-4" />
             </a>
           </Button>
         </div>
+
+        {/* Scroll Indicator - appears at the bottom */}
+        {showScrollIndicator && (
+          <div 
+            className="absolute bottom-[2vh] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-1000 ease-in z-20"
+            style={{ opacity: indicatorOpacity }}
+          >
+            <span className="text-white/80 text-sm font-medium drop-shadow-[0_0_10px_rgba(0,0,0,0.9)]">Scroll to explore</span>
+            <ChevronDown className="h-6 w-6 text-white/80 drop-shadow-[0_0_10px_rgba(0,0,0,0.9)]" />
+          </div>
+        )}
       </div>
     </section>
   );

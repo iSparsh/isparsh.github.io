@@ -1,6 +1,7 @@
 [
-  { "type": "header", "text": "About Me" },
-  { "type": "paragraph", "text": "Welcome to my digital space. I'm a developer passionate about creating meaningful experiences through code." },
-  { "type": "paragraph", "text": "I enjoy building web applications, exploring new technologies, and contributing to open-source projects." }
+  { "type": "header", "text": "About" },
+  { "type": "paragraph", "text": "Hello! I'm Sparsh Mishra, a passionate Computer Science and Mathematics student at the University of Wisconsin-Madison. My academic journey has placed me on the Dean's List from 2023-2025, reflecting my deep commitment to technical excellence." },
+  { "type": "paragraph", "text": "Professionally, I've had the opportunity to dive into cutting-edge technologies—from managing complex ML experimentation lifecycles with MLFlow and Hydra at Dirac Labs to developing high-performance real-time inference pipelines on NVIDIA Jetson Orin Nano." },
+  { "type": "paragraph", "text": "I'm a builder at heart, focusing on architecting robust, scalable, and efficient systems, whether I'm optimizing system latency by 30% using AWS OpenSearch or developing custom RAG pipelines with AWS Bedrock." },
+  { "type": "paragraph", "text": "I'm fluent in a range of languages including Python, Java, and C++, and I thrive on leveraging my diverse skill set to transform challenging ideas into concrete, functional solutions." }
 ]
-

@@ -1,9 +1,6 @@
 [
   { "type": "header", "text": "Linux" },
-  { "type": "paragraph", "text": "My Linux journey, configurations, and contributions." },
-  { "type": "list", "items": [
-    "Linux Skill 1 - Description here",
-    "Linux Skill 2 - Description here",
-    "Linux Skill 3 - Description here"
-  ]}
+  { "type": "paragraph", "text": "My systems-level tinkering with Linux is more than a hobby—it's a deep-seated interest in how computing fundamentally works. I'm passionate about exploring the architecture, configuring components, and squeezing the maximum performance out of my machines." },
+  { "type": "paragraph", "text": "This interest has naturally led me to become an active contributor to the open-source Linux community. I've contributed to several high-impact projects, including Mermaid JS, Elkowar's Wacky Widgets (EWW), and Archinstall, among others, helping to improve tools and systems used by countless developers globally." },
+  { "type": "paragraph", "text": "I'm looking forward to taking my systems knowledge to the next level by soon embarking on the ultimate custom-build challenge: a complete Linux From Scratch (LFS) journey." }
 ]

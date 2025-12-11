@@ -1,7 +1,7 @@
 [
-  { "type": "header", "text": "Get In Touch" },
-  { "type": "paragraph", "text": "Email: your.email@example.com" },
-  { "type": "paragraph", "text": "GitHub: github.com/yourusername" },
-  { "type": "paragraph", "text": "LinkedIn: linkedin.com/in/yourprofile" }
+  { "type": "header", "text": "Contact" },
+  { "type": "paragraph", "text": "Let's connect! I'm always open to discussing new projects, collaboration opportunities, or anything in the intersection of ML and low-level programming." },
+  { "type": "contact", "label": "Email", "value": "spmishra@wisc.edu", "type": "email", "href": "mailto:spmishra@wisc.edu" },
+  { "type": "contact", "label": "LinkedIn", "value": "https://www.linkedin.com/in/sparsh-mishra-24b946241/", "type": "linkedin", "href": "https://www.linkedin.com/in/sparsh-mishra-24b946241/" },
+  { "type": "contact", "label": "Location", "value": "Madison, WI", "type": "location" }
 ]
-

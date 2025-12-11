@@ -1,0 +1,43 @@
+Here are the expanded sections for your personal website, maintaining a casual and professional balance and including all the details from your resume:
+
+## About
+
+Hello! I'm Sparsh Mishra, a passionate Computer Science and Mathematics student at the University of Wisconsin-Madison. My academic journey has placed me on the Dean's List from 2023-2025, reflecting my deep commitment to technical excellence. Professionally, I've had the opportunity to dive into cutting-edge technologies—from managing complex ML experimentation lifecycles with MLFlow and Hydra at Dirac Labs to developing high-performance real-time inference pipelines on NVIDIA Jetson Orin Nano. I'm a builder at heart, focusing on architecting robust, scalable, and efficient systems, whether I'm optimizing system latency by 30% using AWS OpenSearch or developing custom RAG pipelines with AWS Bedrock. I'm fluent in a range of languages including Python, Java, and C++, and I thrive on leveraging my diverse skill set to transform challenging ideas into concrete, functional solutions.
+
+---
+
+## Projects
+
+### Patient Management System
+This was a significant project where I deployed a microservices-based hospital system using technologies like AWS Bedrock, Java Spring, Kafka, and PostgreSQL. The core objective was to replace an inefficient manual paper-and-pen system. The result was dramatic: the new system lowered documentation time by 60% and improved retrieval time by an impressive 380× during a parallel run experiment. The architecture is designed for scalability and security, featuring role-based access, gRPC communication, and containerized services. The backend is expertly orchestrated with Java Spring and Kafka. A key user-facing feature is a centralized dashboard managing over 12 data streams, allowing for on-demand status checks, appointment overviews, prescription printing, and tracking of blood tests and doctor notes.
+
+### Kairos
+Kairos utilizes a custom RAG (Retrieval-Augmented Generation) pipeline built with React Native, Google Cloud, and AWS Bedrock. The goal was to make course information instantly accessible to students. I built the pipeline to transform unstructured PDF syllabus documents into a structured format, enabling students to ask questions about their classes in natural language. Additionally, I developed a custom integration between the syllabus documents, Canvas, and Google Calendar. This integration automatically schedules assignments, uses smart-scheduling logic, and tracks completion, ultimately reducing the time students spend on tracking coursework by 20%.
+
+---
+
+## Research
+
+My research work involves applying cutting-edge deep learning techniques to tackle important scientific challenges.
+
+### University of Oxford, Remote
+Between February 2022 and November 2022, I served as a Student Research Assistant. Under the mentorship of Dr. Utkarsh Agrawal, I co-authored the paper "Detecting COVID-19 Infections from CT Scans Using a Convolutional Neural Network". I was responsible for developing a custom CNN using Python and TensorFlow, which successfully achieved an accuracy of 97.3% on a public dataset. This paper was entered into the iNSPIRE Competition.
+
+### Maharashtra Institute of Technology, Aurangabad, India
+From December 2021 to October 2022, I worked as a Student Research Assistant. I co-authored a research paper focusing on computer vision and optimization: "An Improved Object Tracking and Estimating Using Yolov5 Model Based on Adaptive Kalman Filter and Mixed Precision for Efficient Inference Performance on Surveillance Camera". This paper has been submitted to the Trends in Science Journal and is currently available to read in pre-print.
+
+---
+
+## Linux
+
+My systems-level tinkering with Linux is more than a hobby—it's a deep-seated interest in how computing fundamentally works. I'm passionate about exploring the architecture, configuring components, and squeezing the maximum performance out of my machines. This interest has naturally led me to become an active contributor to the open-source Linux community. I've contributed to several high-impact projects, including Mermaid JS, Elkowar's Wacky Widgets (EWW), and Archinstall, among others, helping to improve tools and systems used by countless developers globally. I'm looking forward to taking my systems knowledge to the next level by soon embarking on the ultimate custom-build challenge: a complete Linux From Scratch (LFS) journey.
+
+---
+
+## Contact
+
+Let's connect! I'm always open to discussing new projects, collaboration opportunities, or anything in the intersection of ML and low-level programming.
+
+Email: spmishra@wisc.edu
+LinkedIn: [Your LinkedIn Profile URL]
+Location: Madison, WI

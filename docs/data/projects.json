@@ -1,9 +1,28 @@
 [
-  { "type": "header", "text": "Featured Projects" },
-  { "type": "list", "items": [
-    "Personal Website - A retro-modern portfolio experience",
-    "Project 2 - Description here",
-    "Project 3 - Description here"
-  ]}
+  { "type": "header", "text": "Projects" },
+  {
+    "type": "project",
+    "title": "Patient Management System",
+    "description": "This was a significant project where I deployed a microservices-based hospital system using technologies like AWS Bedrock, Java Spring, Kafka, and PostgreSQL. The core objective was to replace an inefficient manual paper-and-pen system.",
+    "results": "The result was dramatic: the new system lowered documentation time by 60% and improved retrieval time by an impressive 380× during a parallel run experiment.",
+    "features": [
+      "Architecture designed for scalability and security",
+      "Role-based access, gRPC communication, and containerized services",
+      "Backend orchestrated with Java Spring and Kafka",
+      "Centralized dashboard managing over 12 data streams",
+      "On-demand status checks, appointment overviews, prescription printing, and tracking of blood tests and doctor notes"
+    ]
+  },
+  {
+    "type": "project",
+    "title": "Kairos",
+    "description": "Kairos utilizes a custom RAG (Retrieval-Augmented Generation) pipeline built with React Native, Google Cloud, and AWS Bedrock. The goal was to make course information instantly accessible to students.",
+    "features": [
+      "Pipeline transforms unstructured PDF syllabus documents into a structured format",
+      "Enables students to ask questions about their classes in natural language",
+      "Custom integration between syllabus documents, Canvas, and Google Calendar",
+      "Automatically schedules assignments using smart-scheduling logic",
+      "Tracks completion, reducing time students spend on tracking coursework by 20%"
+    ]
+  }
 ]
-
