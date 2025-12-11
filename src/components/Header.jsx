@@ -54,7 +54,7 @@ function Header() {
         <div className="w-48 h-48 flex-shrink-0">
           <img
             src={myPicture}
-            alt="Profile"
+            alt="Sparsh Mishra profile photo"
             className="w-full h-full object-cover rounded-full border-4 border-border shadow-[0_0_20px_rgba(0,0,0,0.8)]"
           />
         </div>

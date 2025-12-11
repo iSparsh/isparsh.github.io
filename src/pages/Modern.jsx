@@ -190,7 +190,7 @@ function Modern() {
                               <div className="p-3 rounded-lg bg-accent/50 text-accent-foreground transition-colors">
                                 <Icon className="h-6 w-6" />
                               </div>
-                              <h3 className="text-2xl font-bold text-foreground">{section.title}</h3>
+                              <h2 className="text-2xl font-bold text-foreground">{section.title}</h2>
                             </div>
                             <p className="text-base text-muted-foreground mb-6 flex-grow">
                               {section.description}

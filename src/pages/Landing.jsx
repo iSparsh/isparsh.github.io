@@ -88,7 +88,7 @@ function Landing() {
               <img
                 ref={redPillImageRef}
                 src={redPillImg}
-                alt=""
+                alt="Red pill - click to enter retro terminal mode"
                 className="pointer-events-auto group-hover:scale-125 group-hover:-translate-y-2 group-focus:scale-125 group-focus:-translate-y-2"
                 style={{ 
                   width: "var(--red-pill-size)", 
@@ -151,7 +151,7 @@ function Landing() {
               <img
                 ref={bluePillImageRef}
                 src={bluePillImg}
-                alt=""
+                alt="Blue pill - click to enter modern website mode"
                 className="pointer-events-auto group-hover:scale-125 group-hover:-translate-y-2 group-focus:scale-125 group-focus:-translate-y-2"
                 style={{ 
                   width: "var(--blue-pill-size)", 
